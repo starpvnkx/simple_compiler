@@ -458,14 +458,14 @@ Nov 23  24  25  26  27  28  29  30
 
 ### M0: Baseline (Mon Nov 23)
 
-- [ ] Install/check `flex`, `bison` (≥ 3.0), `gcc`, `make`
-- [ ] Create the folder structure from §6
-- [ ] Copy `lexer.l`, `parser.y`, `expr.[ch]`, `stmt.[ch]`, `table.[ch]` from the PDF into `src/`
-- [ ] Apply the base-code fixes from §2.3 and list them for the docs
-- [ ] Write the `Makefile` (all/test/run/clean)
-- [ ] Update `.gitignore` for generated files
-- [ ] Add the 4 PDF programs to `tests/baseline/` with `.expected` output
-- [ ] Write a first version of `scripts/run_tests.sh`
+- [x] Install/check `flex`, `bison` (≥ 3.0), `gcc`, `make`
+- [x] Create the folder structure from §6
+- [x] Copy `lexer.l`, `parser.y`, `expr.[ch]`, `stmt.[ch]`, `table.[ch]` from the PDF into `src/`
+- [x] Apply the base-code fixes from §2.3 and list them for the docs
+- [x] Write the `Makefile` (all/test/run/clean)
+- [x] Update `.gitignore` for generated files
+- [x] Add the 4 PDF programs to `tests/baseline/` with `.expected` output
+- [x] Write a first version of `scripts/run_tests.sh`
 
 **DoD:** `make` builds with no warnings, `make test` passes 4/4 baseline tests, and the work is committed.
 
