@@ -4,7 +4,7 @@
 #include "parser.tab.h"
 %}
 
-%option noyywrap
+%option noyywrap nounput noinput
 
 %%
 IF                      { return IF; }
