@@ -1,0 +1,9 @@
+SET n 8;
+
+REPEATN 8 {
+  REPEATN n {
+    PRINT "*";
+  }
+  PRINTNL "";
+  SET n n - 1;
+}

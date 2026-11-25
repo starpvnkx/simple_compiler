@@ -1,0 +1,9 @@
+SET number 24;
+SET n 1;
+
+PRINTNL "Divisores de 24";
+REPEATN number {
+  IF number % n = 0 THEN
+    PRINTNL n;
+  SET n n + 1;
+}

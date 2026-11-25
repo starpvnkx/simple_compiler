@@ -1,0 +1,7 @@
+SET number 12;
+PRINT number;
+IFELSE number = 0 THEN
+  PRINT " is zero";
+  IFELSE number > 0 THEN
+    PRINT " es positivo";
+    PRINT " es negativo";

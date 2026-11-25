@@ -1,0 +1,10 @@
+SET n 1;
+SET num 5;
+SET factorial 1;
+
+REPEATIF n < num + 1 {
+  SET factorial factorial * n;
+  SET n n + 1;
+}
+PRINT "5!= ";
+PRINT factorial;
