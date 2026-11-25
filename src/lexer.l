@@ -1,5 +1,6 @@
 %{
 #include <stdlib.h>
+#include <string.h>
 #include "parser.tab.h"
 %}
 
@@ -13,7 +14,7 @@ THEN                    { return THEN; }
 ELSE                    { return ELSE; }
 PRINTNL                 { return PRINTNL; }
 PRINT                   { return PRINT; }
-REPEATIN                { return REPEATIN; }
+REPEATN                 { return REPEATN; }
 REPEATIF                { return REPEATIF; }
 [+]                     { return PLUS; }
 [-]                     { return MINUS; }
@@ -25,22 +26,13 @@ REPEATIF                { return REPEATIF; }
 [=]                     { return EQUAL; }
 [{]                     { return LBRACE; }
 [}]                     { return RBRACE; }
-[;]                     { return DELIM; }
-[i?:or]                 { return OR; }
-[i?and]                 { return AND; }
-[i?:not]                { return NOT; }
-["][[:print:]]*["]      { 
-                            yylval.str = yytext;
-                            return STR;
-                        }
-[a-zA-Z]+               { 
-                            yylval.str = yytext;
-                            return VAR;
-                        }
-[0-9]+                  { 
-                            yylval.num = atoi(yytext);
-                            return NUM;    
-                        }
+[;]                     { return SEMI; }
+[oO][rR]                { return OR; }
+[aA][nN][dD]            { return AND; }
+[nN][oO][tT]            { return NOT; }
+["][[:print:]]*["]      { yylval.str = strdup(yytext); return STRING; }
+[a-zA-Z]+               { yylval.str = strdup(yytext); return VNAME; }
+[0-9]+                  { yylval.numb = atoi(yytext); return NUMBER; }
 \n                      { }
 .                       { }
 %%
