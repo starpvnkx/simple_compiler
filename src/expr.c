@@ -47,7 +47,7 @@ int expr_evaluate(struct expr* e) {
       if (r != 0)
         return l / r;
       else {
-        puts("div by zero");
+        fprintf(stderr, "Runtime error: division by zero\n");
         exit(1);
       }
       break;
@@ -55,7 +55,7 @@ int expr_evaluate(struct expr* e) {
       if (r != 0)
         return l % r;
       else {
-        puts("div by zero");
+        fprintf(stderr, "Runtime error: division by zero\n");
         exit(1);
       }
       break;
@@ -71,7 +71,7 @@ int expr_evaluate(struct expr* e) {
       if (index >= 0)
         return table[index].value;
       else {
-        printf("Unknown variable %s", e->vname);
+        fprintf(stderr, "Runtime error: unknown variable '%s'\n", e->vname);
         exit(1);
       }
     }

@@ -36,12 +36,12 @@ struct stmt * parser_result = 0;
 %nonassoc LESS GREATER EQUAL
 %left PLUS MINUS
 %left TIMES DIVIDE MODULE
-%right NOT
+%precedence NOT
 
 %%
 P: LS YYEOF { parser_result = $1; }
 LS: S LS { $$ = $1; $1->next = $2; }
-LS: /* epsilon */ { $$ = 0; }
+LS: %empty { $$ = 0; }
 S: SET VARNAME EXPR SEMI { $$ = stmt_create(STMT_SET, $2, $3, 0, 0, 0, 0); }
 S: IFELSE EXPR THEN S S { $$ = stmt_create(STMT_IFELSE, 0, $2, $4, $5, 0, 0); }
 S: IF EXPR THEN S { $$ = stmt_create(STMT_IF, 0, $2, $4, 0, 0, 0); }
@@ -76,11 +76,13 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  if (yyparse() == 0)
-    execute_stmt(parser_result);
-
+  int status = yyparse();
   fclose(yyin);
+  if (status != 0)
+    return 1;
+
+  execute_stmt(parser_result);
   return 0;
 }
 
-void yyerror(const char *s) { printf("error: %s\n", s); }
+void yyerror(const char *s) { fprintf(stderr, "error: %s\n", s); }

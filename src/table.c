@@ -15,7 +15,7 @@ void set_symbol(char *sname, int svalue) {
   if (pos < 0) {
     /* Check the limit before writing, so we never write past the table. */
     if (num_sym >= MAX_VAR) {
-      printf("Var limit");
+      fprintf(stderr, "Runtime error: too many variables (max %d)\n", MAX_VAR);
       exit(1);
     }
     table[num_sym].name = sname;
