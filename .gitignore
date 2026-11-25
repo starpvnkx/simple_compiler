@@ -53,3 +53,11 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# SIMPLE interpreter build output
+build/
+/simple
+*.tab.c
+*.tab.h
+lex.yy.c
+*.output
